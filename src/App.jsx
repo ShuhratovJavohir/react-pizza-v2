@@ -1,14 +1,18 @@
+import React from 'react'
 import Header from "./components/Header";
 import Router from './router'
 
+
 function App() {
+  const [searchValue, setSearchValue] = React.useState('')
+
   return (
     <div className="app">
       <div className="wrapper">
-        <Header />
+        <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
         <div className="content">
           <div className="container">
-            <Router/>
+            <Router searchValue={searchValue} setSearchValue={setSearchValue}/>
           </div>
         </div>
       </div>

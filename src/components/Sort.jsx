@@ -4,8 +4,13 @@ const Sort = ({value, onClickSort}) => {
   // state
   const [openSort, setOpenSort] = React.useState(false);
 
-  const sorts = ['популярности', 'цене', 'алфавиту']
-  let sortName = sorts[value]
+  const sorts = [
+    {id: 0, name: 'популярности', sortType: 'rating'},
+    {id: 1, name: 'по цене', sortType: 'price'},
+    {id: 2, name: 'по алфавиту', sortType: 'title'},
+  ]
+
+  let sortName = value.name
 
   // function
   const onClickSortItem = (index) => {
@@ -35,8 +40,8 @@ const Sort = ({value, onClickSort}) => {
         <div className="sort__popup">
           <ul>
             {
-              sorts.map((sort, index) => (
-                <li onClick={() => onClickSortItem(index)} className={value == index ? 'active' : ''}>{sort}</li>
+              sorts.map((obj, index) => (
+                <li key={index} onClick={() => onClickSortItem(obj)} className={value.id == obj.id ? 'active' : ''}>{obj.name}</li>
               ))
             }
           </ul>
